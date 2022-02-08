@@ -1,0 +1,7 @@
+let numero1 = prompt("ingrese el primer numero ")
+let numero2 = prompt("Ingrese el segundo numero ")
+numero1 = parseInt(numero1)
+numero2 = parseInt(numero2)
+let resultado = (numero1 + numero2)
+alert(" el resultado es " + resultado)
+console.log("el resultado es" + resultado)
