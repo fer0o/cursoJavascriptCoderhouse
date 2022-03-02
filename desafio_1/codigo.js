@@ -4,13 +4,20 @@ alert('Bienvenido, esta es una caluladora de Indice de Masa Corporal')
 const sexo = prompt(
   'para iniciar Escriba su sexo M para pasculino F para femenino '
 )
+let nombre = prompt('Escriba su nombre')
+let apellido = prompt('Escriba su apellido')
 // let edad = prompt('Digite su edad')
 let altura = prompt('digite su altura en centimetros')
 let peso = prompt('Digite su peso en kg')
 // conversion de datos
 altura = parseFloat(altura)
 peso = parseInt(peso)
+
+altura = Math.round(altura) / 100
+peso = Math.round(peso)
+let calculo = peso / Math.pow(altura, 2)
 // edad = parseInt(edad)
+
 // manejo de excepiones
 try {
   if (altura === '') {
@@ -23,11 +30,9 @@ try {
 } catch {
   console.error('datos no validos o faltantes')
 }
-function CalcularIMC (sexo, altura, peso) {
+function CalcularIMC (sexo) {
   // redondeo de valores
-  altura = Math.round(altura) / 100
-  peso = Math.round(peso)
-  let calculo = peso / Math.pow(altura, 2)
+
   let resultado = ''
   const tablaMujeres = `tabla de IMC 
 menos de 16 -> Desnutricion
@@ -81,3 +86,66 @@ function MostrarResultadoIMC (sexo, altura, peso, calculo) {
 }
 let resultado = CalcularIMC(sexo, altura, peso)
 MostrarResultadoIMC(sexo, altura, peso, resultado)
+
+let data = [
+  {
+    nombre: 'Predo',
+    apellido: 'Perez',
+    altura: 167,
+    peso: 55,
+    sexo: 'M',
+    imc: 24.9
+  },
+  {
+    nombre: 'Juanita',
+    apellido: 'Gonzales',
+    altura: 170,
+    peso: 40,
+    sexo: 'F',
+    imc: 22.3
+  },
+  {
+    nombre: 'Pamela',
+    apellido: 'Beltran',
+    altura: 169,
+    peso: 49,
+    sexo: 'F',
+    imc: 21.3
+  },
+  {
+    nombre: 'Daniel',
+    apellido: 'Contreras',
+    altura: 187,
+    peso: 87,
+    sexo: 'M',
+    imc: 29.9
+  },
+  {
+    nombre: 'Cristina',
+    apellido: 'Arteaga',
+    altura: 140,
+    peso: 45,
+    sexo: 'F',
+    imc: 22.9
+  }
+]
+
+data.push({
+  nombre: `${nombre}`,
+  apellido: `${apellido}`,
+  altura: altura,
+  peso: peso,
+  sexo: `${sexo}`,
+  imc: calculo
+})
+
+console.log(data)
+
+console.log(calculo)
+for (const element of data) {
+  if (element.sexo === 'F' && element.imc >= 24 && element.imc <= 28.9) {
+    console.log(`${element.nombre} ${element.apellido} Necesitas una dieta`)
+  } else if (element.sexo === 'M' && element.imc >= 25 && element.imc <= 29.9) {
+    console.log(`${element.nombre} ${element.apellido} Necesitas una dieta`)
+  }
+}
