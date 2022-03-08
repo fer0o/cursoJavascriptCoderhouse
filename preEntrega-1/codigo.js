@@ -59,7 +59,9 @@ function Record (systolic, diastolic, date) {
   this.date = date
 }
 
-data = data.map(record => new Record(record.systolic, record.diastolic, record.date))
+data = data.map(
+  record => new Record(record.systolic, record.diastolic, record.date)
+)
 
 const sys = parseInt(prompt('enter systolic value'))
 
@@ -102,13 +104,39 @@ const status = (systolic, diastolic) => {
 const lowStatus = allData.filter(
   record => status(record.systolic, record.diastolic) === 'Low'
 )
-console.log(lowStatus)
+console.log('Low Status:')
+lowStatus.forEach(entry =>
+  console.log(
+    `The date date: ${entry.date} yours  registers presents this data: systolic:${entry.systolic} diastolic:${entry.diastolic} and have low levels its necessary to visit a doctor maybe your are hypotense`
+  )
+)
 
-const normalStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'Normal')
-console.log(normalStatus)
+const normalStatus = allData.filter(
+  record => status(record.systolic, record.diastolic) === 'Normal'
+)
+console.log('Normal Status:')
+normalStatus.forEach(entry =>
+  console.log(
+    `The date ${entry.date} you registers presents this data: systolic:${entry.systolic} diastolic:${entry.diastolic}. You have normal levels, its not necessary to vistit a doctor, but still care yourself `
+  )
+)
 
-const highStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'Risk')
-console.log(highStatus)
+const riskStatus = allData.filter(
+  record => status(record.systolic, record.diastolic) === 'Risk'
+)
+console.log('Risk Status:')
+riskStatus.forEach(entry =>
+  console.log(
+    `The date ${entry.date} your registers presents this data: systolic:${entry.systolic} diastolic${entry.diastolic}. You have risk levels, its necessary to visit a doctor and check it to prevent be hypertension`
+  )
+)
 
-const riskStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'High')
-console.log(riskStatus)
+const highStatus = allData.filter(
+  record => status(record.systolic, record.diastolic) === 'High'
+)
+console.log('High Status:')
+highStatus.forEach(entry =>
+  console.log(
+    `The date ${entry.date} your registers presents this data: systolic:${entry.systolic} diastolic${entry.diastolic}. You have high levels, its necessary to visit a doctor because have hypertension, its necessary to have the right treatment`
+  )
+)
