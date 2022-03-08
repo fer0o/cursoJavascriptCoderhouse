@@ -1,153 +1,114 @@
-document.write('Sistema de Registro y monitoreo de salud')
+// 90/60 mmHg y 120/80 mmHg
 
-// inicio
-alert('Bienvenido, esta es una caluladora de Indice de Masa Corporal')
+let data = [
+  {
+    systolic: 100,
+    diastolic: 80,
+    date: '2022-03-08'
+  },
+  {
+    systolic: 120,
+    diastolic: 89,
+    date: '2022-03-07'
+  },
+  {
+    systolic: 122,
+    diastolic: 80,
+    date: '2022-03-06'
+  },
+  {
+    systolic: 80,
+    diastolic: 60,
+    date: '2022-02-07'
+  },
+  {
+    systolic: 100,
+    diastolic: 80,
+    date: '2022-02-19'
+  },
+  {
+    systolic: 130,
+    diastolic: 86,
+    date: '2022-01-28'
+  },
+  {
+    systolic: 90,
+    diastolic: 80,
+    date: '2022-03-01'
+  },
+  {
+    systolic: 120,
+    diastolic: 89,
+    date: '2021-12-24'
+  },
+  {
+    systolic: 60,
+    diastolic: 55,
+    date: '2021-12-24'
+  },
+  {
+    systolic: 141,
+    diastolic: 90,
+    date: '2021-12-24'
+  }
+]
 
-// try {
-//   function CalcularIMC (sexo) {
-//     redondeo de valores
+function Record (systolic, diastolic, date) {
+  this.systolic = systolic
+  this.diastolic = diastolic
+  this.date = date
+}
 
-//     let resultado = ''
-//     const tablaMujeres = `tabla de IMC
-//     menos de 16 -> Desnutricion
-//     20-23.9 -> Normal
-//     24-28.9 -> sobrepeso
-//     29-37 -> Obesidad
-//     mas de 37 -> Obesidad morbida
-//   `
-//     const tablaHombres = `tabla de IMC
-//     menos de 20 -> Desnutricion
-//     20-24.9 -> Normal
-//     25-29.9 -> sobrepeso
-//     30-36 -> Obesidad
-//     mas de 37 -> Obesidad morbida`
+data = data.map(record => new Record(record.systolic, record.diastolic, record.date))
 
-//     switch (sexo) {
-//       case 'F':
-//         if (calculo < 16) {
-//           resultado = `eso es un Indice de Masa Muscular bajo es signo de desnutricion Informacion de ayuda: ${tablaMujeres}`
-//         } else if (calculo >= 20 && calculo <= 23.9) {
-//           resultado = `eso es un Indice de Masa Muscular Normal Informacion de ayuda: ${tablaMujeres}`
-//         } else if (calculo >= 24 && calculo <= 28.9) {
-//           resultado = `eso es un Indice de Masa Muscular Regular y tienes algo de sobrepeso Informacion de ayuda: ${tablaMujeres}`
-//         } else if (calculo >= 29 && calculo <= 37) {
-//           resultado = `eso es un Indice de Masa Muscular alto y tienes obesidad Informacion de ayuda: ${tablaMujeres}`
-//         } else if (calculo > 37) {
-//           resultado = `eso es un  Indice de Masa Muscular muy alto y Tienes obesidad morbida Informacion de ayuda: ${tablaMujeres}`
-//         }
-//         break
-//       case 'M':
-//         if (calculo < 20) {
-//           resultado += `eso es un Indice de Masa Muscular bajo Informacion de ayuda: ${tablaHombres}`
-//         } else if (calculo >= 20 && calculo <= 24.9) {
-//           resultado += `eso es un Indice de Masa Muscular Normal Informacion de ayuda: ${tablaHombres}`
-//         } else if (calculo >= 25 && calculo <= 29.9) {
-//           resultado += `eso es un Indice de Masa Muscular Regular y tienes obesidad leve Informacion de ayuda: ${tablaHombres}`
-//         } else if (calculo >= 30 && calculo <= 36) {
-//           resultado += ` eso es un Indice de Masa Muscular alto y tienes obesidad severa Informacion de ayuda: ${tablaHombres}`
-//         } else if (calculo >= 36 && calculo <= 40) {
-//           resultado += ` eso es un  Indice de Masa Muscular muy alto y Tienes obesidad severa Informacion de ayuda: ${tablaHombres}`
-//         }
-//         break
-//     }
-//     return `El IMC es :${calculo.toFixed(2)} y ${resultado} `
-//   }
-//   introduce los datos
-//   const sexo = prompt(
-//     'para iniciar Escriba su sexo M para pasculino F para femenino '
-//   )
-//   let nombre = prompt('Escriba su nombre')
-//   let apellido = prompt('Escriba su apellido')
-//   let altura = parseInt(prompt('digite su altura en centimetros'))
-//   let peso = parseInt(prompt('Digite su peso en kg'))
-//   conversion de datos
+const sys = parseInt(prompt('enter systolic value'))
 
-//   altura = Math.round(altura) / 100
-//   peso = Math.round(peso)
-//   let calculo = peso / Math.pow(altura, 2)
+const dis = parseInt(prompt('enter diastolic value'))
 
-//   manejo de excepiones
-//   if (altura === '') {
-//     if (isNaN(altura)) {
-//     alert('no has escrito nada en altura')
-//   }// else if (peso === '') {
-//     if (isNaN(peso)) {
-//     alert('No has escrito nada en peso')
-//   } else if (sexo === '') {
-//     alert('No has escrito tu sexo')
-//   } else {
+const datePrompt = prompt(
+  'enter the date to register with this format YYYY-MM-DD'
+)
 
-//     function MostrarResultadoIMC (altura, peso, calculo) {
-//       let mensaje = `Mides ${altura / 100} metros y pesas ${peso}KG  ${calculo} `
-//       alert(mensaje)
-//     }
-//     let resultado = CalcularIMC(sexo, altura, peso)
-//     MostrarResultadoIMC(altura, peso, CalcularIMC(sexo, altura, peso))
+const registerPrompt = new Record(sys, dis, datePrompt)
+// console.log(registerPrompt)
 
-//     let data = [
-//       {
-//         nombre: 'Predo',
-//         apellido: 'Perez',
-//         altura: 167,
-//         peso: 55,
-//         sexo: 'M',
-//         imc: 24.9
-//       },
-//       {
-//         nombre: 'Juanita',
-//         apellido: 'Gonzales',
-//         altura: 170,
-//         peso: 40,
-//         sexo: 'F',
-//         imc: 22.3
-//       },
-//       {
-//         nombre: 'Pamela',
-//         apellido: 'Beltran',
-//         altura: 169,
-//         peso: 49,
-//         sexo: 'F',
-//         imc: 21.3
-//       },
-//       {
-//         nombre: 'Daniel',
-//         apellido: 'Contreras',
-//         altura: 187,
-//         peso: 87,
-//         sexo: 'M',
-//         imc: 29.9
-//       },
-//       {
-//         nombre: 'Cristina',
-//         apellido: 'Arteaga',
-//         altura: 140,
-//         peso: 45,
-//         sexo: 'F',
-//         imc: 22.9
-//       }
-//     ]
+const allData = data.concat(registerPrompt)
+// console.log(allData)
 
-//     data.push({
-//       nombre: `${nombre}`,
-//       apellido: `${apellido}`,
-//       altura: altura,
-//       peso: peso,
-//       sexo: `${sexo}`,
-//       imc: calculo
-//     })
+const status = (systolic, diastolic) => {
+  if (systolic < 60 || diastolic < 60) {
+    // console.log('Low levels, its necessary to visit a doctor your are hypotense')
+    return 'Low'
+  } else if (
+    (systolic > 90 && systolic <= 120) ||
+    (diastolic >= 60 && diastolic <= 80)
+  ) {
+    // console.log('Normal levels, Its not necessary to visit a doctir but still care')
+    return 'Normal'
+  } else if (
+    (systolic >= 120 && systolic <= 139) ||
+    (diastolic >= 80 && diastolic <= 89)
+  ) {
+    // console.log('You have risk levels of hypertension, you need to visit a doctor to confirm and treatment')
+    return 'Risk'
+  } else if (systolic > 140 || diastolic > 90) {
+    // console.log('You have high levels, Its necessary to visit a doctor and have an property treatment')
+    return 'High'
+  } else {
+    return 'invalid data'
+  }
+}
 
-//     console.log(data)
+const lowStatus = allData.filter(
+  record => status(record.systolic, record.diastolic) === 'Low'
+)
+console.log(lowStatus)
 
-//     console.log(calculo)
-//     for (const element of data) {
-//       if (element.sexo === 'F' && element.imc >= 24 && element.imc <= 28.9) {
-//         console.log(`${element.nombre} ${element.apellido} Necesitas una dieta`)
-//       } else if (element.sexo === 'M' && element.imc >= 25 && element.imc <= 29.9) {
-//         console.log(`${element.nombre} ${element.apellido} Necesitas una dieta`)
-//       }
-//     }
-//   }
+const normalStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'Normal')
+console.log(normalStatus)
 
-// } catch {
-//   console.error('datos no validos o faltantes')
-// }
+const highStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'Risk')
+console.log(highStatus)
+
+const riskStatus = allData.filter(record => status(record.systolic, record.diastolic) === 'High')
+console.log(riskStatus)
