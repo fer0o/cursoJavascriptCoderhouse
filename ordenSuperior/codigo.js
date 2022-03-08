@@ -35,9 +35,36 @@ function acumular (num) {
 porCadaUNo(numeros, acumular)
 //console.log(total)
 
-function regresaFuncion () {
-  return () => {
-    console.log('Hola Mundo')
-  }
+// function regresaFuncion () {
+//   return () => {
+//     console.log('Hola Mundo')
+//   }
+// }
+// //regresaFuncion()()
+
+
+
+const productos =[
+    {
+        id:1, titulo: 'iPhone', precio:1000, stock:5, descuento:10
+    },
+    {
+        id:2, titulo: 'Xiaomi', precio:200, stock:6, descuento:10
+    },
+    {
+        id:3, titulo: 'Samsung', precio:800, stock:7, descuento:15
+    },
+    {
+        id:4, titulo: 'Motorola', precio:300, stock:10, descuento:30
+    },
+]
+productos.forEach(element =>{
+    console.log(element.titulo)
+    console.log('precio con descuento'+ prescioConDescuento(element.precio, element.descuento))
+})
+
+function prescioConDescuento (precio, descuento){
+    return precio -((precio * descuento)/100)
 }
-regresaFuncion()()
+
+//const nuevoArray
