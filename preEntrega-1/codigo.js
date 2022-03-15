@@ -105,7 +105,6 @@ function validation () {
       return 'invalid data'
     }
   }
-
   const lowStatus = allData.filter(
     record => status(record.systolic, record.diastolic) === 'Low'
   )
