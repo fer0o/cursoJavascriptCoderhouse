@@ -5,21 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./codigo.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <!-- <form>
         <input id='systolic' type='number' placeholder="Insert systolic data">
         <input id='diastolic' type="number" placeholder="Insert diastolic data">
         <input id='date' type="text" placeholder="Insert the date format YYYY-MM-DD">
         <button id="boton" onclick="capturar()">Agregar</button>
-    </form> 
+    </form>  -->
+<!-- 
+    falta hacer funcion validation -->
+    <form id="myform" onsubmit="return validation()"> 
+        <div>
+            <input type="number" placeholder="Insert systolic data" id="sys" value="90">
+        </div>
+        <div>
+            <input type="number" placeholder="Insert diastolic data" id="dis" value="60">
+        </div>
+        <div>
+            <input type="date" value="2022-04-14" min="2019-01-01" max="2022-12-31" id="datePrompt">
+        </div>
+        <div>
+           <input type="submit">
+        </div>
 
+    </form>
     <div>
-        <span> History </span>
+        <div id="result">
+
+        </div>
 
     </div>
     
 </body>
+<script src="./codigo.js"></script>
+
 </html>
