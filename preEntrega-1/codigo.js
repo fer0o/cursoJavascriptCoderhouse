@@ -53,14 +53,21 @@ let data = [
   }
 ]
 
-function Record (systolic, diastolic, date) {
-  this.systolic = systolic
-  this.diastolic = diastolic
-  this.date = date
-}
+// function Record (systolic, diastolic, date) {
+//   this.systolic = systolic
+//   this.diastolic = diastolic
+//   this.date = date
+// }
 
 data = data.map(
-  record => new Record(record.systolic, record.diastolic, record.date)
+  // record => new Record(record.systolic, record.diastolic, record.date)
+  record => {
+    return {
+      systolic: record.systolic,
+      diastolic: record.diastolic,
+      date: record.date
+    }
+  }
 )
 
 // const sys = parseInt(prompt('enter systolic value'))
@@ -76,7 +83,11 @@ function validation () {
   const dis = document.getElementById('dis').value
   const datePrompt = document.getElementById('datePrompt').value
 
-  const registerPrompt = new Record(sys, dis, datePrompt)
+  const registerPrompt = {
+    systolic: sys,
+    diastolic: dis,
+    date: datePrompt
+  }
   // console.log(registerPrompt)
 
   const allData = data.concat(registerPrompt)
@@ -134,5 +145,27 @@ function validation () {
   console.log(riskStatus)
   const textNodeRiskStatus = document.createTextNode(JSON.stringify(riskStatus))
   document.getElementById('result').appendChild(textNodeRiskStatus)
+  // local storage new elements
+  let records = localStorage.getItem('records') || '[]'
+  records = JSON.parse(records)
+  records.push(registerPrompt)
+  jsonValue = JSON.stringify(records)
+  localStorage.setItem('records', jsonValue)
+  // console.log(localStorage.getItem('records', jsonValue))
+
+  // jsonValue.forEach(element => {
+  //   let elements = document.getElementById('elements')
+  //   let div = document.createElement('div')
+  //   div.innerHTML =
+  //     element.systolic + ' ' + element.diastolic + ' ' + element.date
+  //   elements.appendChild(div)
+  // })
   event.preventDefault()
 }
+// funcion para mostar elementos de local storage
+
+// refords = llocalstoeage.getitem('recordfs')
+// records = json.psrae(
+// )
+// records.foreach()
+// addhtml
