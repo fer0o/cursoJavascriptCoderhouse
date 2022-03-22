@@ -143,6 +143,7 @@ function validation () {
     record => status(record.systolic, record.diastolic) === 'High'
   )
   console.log(riskStatus)
+  ///
   const textNodeRiskStatus = document.createTextNode(JSON.stringify(riskStatus))
   document.getElementById('result').appendChild(textNodeRiskStatus)
   let records = localStorage.getItem('records') || '[]'
