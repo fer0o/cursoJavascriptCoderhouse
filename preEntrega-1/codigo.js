@@ -152,6 +152,7 @@ function validation () {
   jsonValue = JSON.stringify(records)
   localStorage.setItem('records', jsonValue)
   // console.log(localStorage.getItem('records', jsonValue))
+
   // jsonValue.forEach(element => {
   //   let elements = document.getElementById('elements')
   //   let div = document.createElement('div')
