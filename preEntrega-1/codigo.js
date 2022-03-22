@@ -61,7 +61,7 @@ let data = [
 
 data = data.map(
   // record => new Record(record.systolic, record.diastolic, record.date)
-  (record) => {
+  record => {
     return {
       systolic: record.systolic,
       diastolic: record.diastolic,
@@ -143,16 +143,25 @@ function validation () {
     record => status(record.systolic, record.diastolic) === 'High'
   )
   console.log(riskStatus)
-  ///
   const textNodeRiskStatus = document.createTextNode(JSON.stringify(riskStatus))
   document.getElementById('result').appendChild(textNodeRiskStatus)
+  // local storage new elements
   let records = localStorage.getItem('records') || '[]'
   records = JSON.parse(records)
   records.push(registerPrompt)
   jsonValue = JSON.stringify(records)
   localStorage.setItem('records', jsonValue)
+  // console.log(localStorage.getItem('records', jsonValue))
+  // jsonValue.forEach(element => {
+  //   let elements = document.getElementById('elements')
+  //   let div = document.createElement('div')
+  //   div.innerHTML =
+  //     element.systolic + ' ' + element.diastolic + ' ' + element.date
+  //   elements.appendChild(div)
+  // })
   event.preventDefault()
 }
+// funcion para mostar elementos de local storage
 
 // refords = llocalstoeage.getitem('recordfs')
 // records = json.psrae(
