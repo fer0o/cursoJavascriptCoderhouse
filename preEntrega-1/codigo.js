@@ -152,3 +152,9 @@ function validation () {
   localStorage.setItem('records', jsonValue)
   event.preventDefault()
 }
+
+// refords = llocalstoeage.getitem('recordfs')
+// records = json.psrae(
+// )
+// records.foreach()
+// addhtml
