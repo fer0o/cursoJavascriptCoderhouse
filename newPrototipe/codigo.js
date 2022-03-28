@@ -15,7 +15,6 @@ function addElementToList () {
   const valueDate = inputDate.value
 
   if (valueSys.trim()) {
-    // console.log(valueSys)
     elementSys.push(valueSys)
     //console.log(elementSys)
     renderElements()
@@ -23,18 +22,13 @@ function addElementToList () {
     alert('Falta valor systolico')
   }
   if (valueDis.trim()) {
-    //console.log(valueDis)
     elementDis.push(valueDis)
     //console.log(elementDis)
-    renderElements()
   } else {
     alert('Falta valor distolico')
   }
   if (valueDate.trim()) {
-    //console.log(valueDate)
     elementDate.push(valueDate)
-    //console.log(elementDate)
-    renderElements()
   } else {
     alert('Falta fecha')
   }
