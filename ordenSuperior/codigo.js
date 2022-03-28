@@ -42,29 +42,73 @@ porCadaUNo(numeros, acumular)
 // }
 // //regresaFuncion()()
 
-
-
-const productos =[
-    {
-        id:1, titulo: 'iPhone', precio:1000, stock:5, descuento:10
-    },
-    {
-        id:2, titulo: 'Xiaomi', precio:200, stock:6, descuento:10
-    },
-    {
-        id:3, titulo: 'Samsung', precio:800, stock:7, descuento:15
-    },
-    {
-        id:4, titulo: 'Motorola', precio:300, stock:10, descuento:30
-    },
+const productos = [
+  {
+    id: 1,
+    titulo: 'iPhone',
+    precio: 1000,
+    stock: 5,
+    descuento: 10
+  },
+  {
+    id: 2,
+    titulo: 'Xiaomi',
+    precio: 200,
+    stock: 6,
+    descuento: 10
+  },
+  {
+    id: 3,
+    titulo: 'Samsung',
+    precio: 800,
+    stock: 7,
+    descuento: 15
+  },
+  {
+    id: 4,
+    titulo: 'Motorola',
+    precio: 300,
+    stock: 10,
+    descuento: 30
+  }
 ]
-productos.forEach(element =>{
-    console.log(element.titulo)
-    console.log('precio con descuento'+ prescioConDescuento(element.precio, element.descuento))
+productos.forEach(element => {
+  console.log(element.titulo)
+  console.log(
+    'precio con descuento' +
+      prescioConDescuento(element.precio, element.descuento)
+  )
 })
 
-function prescioConDescuento (precio, descuento){
-    return precio -((precio * descuento)/100)
+function prescioConDescuento (precio, descuento) {
+  return precio - (precio * descuento) / 100
 }
 
 //const nuevoArray
+
+function multiplicarPor (multiplicador) {
+  // se crea una funcion que recibe multiplicador
+  return numero => {
+    //va a regresar un numero y se crea una funcion flecha que va a regresar el numero multiplicado por  el multiplicador
+    return numero * multiplicador
+  }
+}
+//el multiplicador aun no tiene un valor
+const multiplicarPor10 = multiplicarPor(10) //se crea una constante llamada multiplicarPor10 que va a ser igual a la funcion multiplicarPor con un valor de 10
+const multiplicarPor12 = multiplicarPor(12)
+console.log(multiplicarPor10(9)) // se va a imprimir en consola la funcion multiplicarPor10 con un valor de 9
+console.log(multiplicarPor12(5))
+//entonces la funcion multiplicarPor va a recibir el valor que tiene multiplicador, que a su vez multiplicador recibe el valor numero que esta en el valor de la funcion multiplicarPor10
+//y la funcion multiplicarPor10 recibe el valor de 9
+//10*9
+
+function saludador (nombre) {
+  return () => {
+    console.log(`Hola ${nombre}`)
+  }
+}
+const saludarFer = saludador(`Fer`)
+const saludarPeter = saludador(`Peter`)
+
+saludarFer()
+saludarPeter()
