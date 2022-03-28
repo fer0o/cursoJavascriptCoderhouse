@@ -1,8 +1,9 @@
-// array vacio
-// const elementSys = []
-// const elementDis = []
-// const elementDate = []
-const elements = []
+const storageElements = localStorage.getItem('elements')
+let elements = []
+if (storageElements) {
+  elements = JSON.parse(storageElements)
+}
+renderElements()
 
 //declarar funcion
 function addElementToList () {
@@ -35,16 +36,14 @@ function addElementToList () {
   }
   elements.push(entryData)
   renderElements()
+  localStorage.setItem('elements', JSON.stringify(elements))
 }
 
 function renderElements () {
-  //   const container = document.getElementById('elements')
-  //   const item = document.createElement('li')
-  //   item.className = 'list-group-item'
-  //   container.appendChild(item)
   const container = document.getElementById('elements')
+  container.innerHTML = ''
   for (const element of elements) {
-    console.log(element)
+    //console.log(element)
     const item = document.createElement('li')
     item.textContent = `Systolic:${element.systolic} | Distolic:${element.diastolic} | Fecha: ${element.date}`
     item.className = 'list-group-item'
