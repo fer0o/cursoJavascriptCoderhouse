@@ -18,15 +18,36 @@ function addElementToList () {
   event.preventDefault()
 
   if (!valueSys.trim()) {
-    alert('Falta valor systolico')
+    // alert('Falta valor systolico')
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Falta valor systolico!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
     return
   }
   if (!valueDis.trim()) {
-    alert('Falta valor distolico')
+    // alert('Falta valor distolico')
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Falta valor distolico!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
     return
   }
   if (!valueDate.trim()) {
-    alert('Falta fecha')
+    // alert('Falta fecha')
+
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Dato de fecha incorrecta!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
     return
   }
   const entryData = {
