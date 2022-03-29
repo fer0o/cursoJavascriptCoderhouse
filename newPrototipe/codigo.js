@@ -23,8 +23,7 @@ function addElementToList () {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Falta valor systolico!',
-      footer: '<a href="">Why do I have this issue?</a>'
+      text: 'Falta valor systolico!'
     })
     return
   }
@@ -34,8 +33,7 @@ function addElementToList () {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Falta valor distolico!',
-      footer: '<a href="">Why do I have this issue?</a>'
+      text: 'Falta valor distolico!'
     })
     return
   }
@@ -45,8 +43,7 @@ function addElementToList () {
     Swal.fire({
       icon: 'error',
       title: 'Oops...',
-      text: 'Dato de fecha incorrecta!',
-      footer: '<a href="">Why do I have this issue?</a>'
+      text: 'Dato de fecha incorrecta!'
     })
     return
   }
