@@ -78,6 +78,15 @@ data = data.map(
 //   'enter the date to register with this format YYYY-MM-DD'
 // )
 
+// function sayName(person) {
+//   return `Hola ${person.firstName} ${person.lastName}!`
+// }
+
+// function sayName2({ firstName, lastName}, language) {
+//   if (language === 'English') { return `Hola ${firstName} ${lastName}!` }
+//   else if (language === 'Spanisgh') ///
+// }
+
 function validation () {
   const sys = document.getElementById('sys').value
   const dis = document.getElementById('dis').value
