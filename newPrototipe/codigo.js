@@ -9,12 +9,7 @@ function Record ({ systolic, diastolic, date }) {
   this.systolic = systolic
   this.diastolic = diastolic
   this.date = date
-
-  // this.validate = function () {
-  //   if (this.systolic > 100 && ...) {
-  //     return "LOWWW@!"
-  //   }
-  // }
+  // aqui va la validacion  con el calculo
 }
 
 //declarar funcion
@@ -79,5 +74,6 @@ function renderElements () {
     item.textContent = `Systolic:${element.systolic} | Distolic:${element.diastolic} | Fecha: ${element.date}`
     item.className = 'list-group-item'
     container.appendChild(item)
+    record.validate()
   }
 }
