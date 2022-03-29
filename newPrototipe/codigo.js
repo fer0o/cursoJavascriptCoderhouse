@@ -74,6 +74,6 @@ function renderElements () {
     item.textContent = `Systolic:${element.systolic} | Distolic:${element.diastolic} | Fecha: ${element.date}`
     item.className = 'list-group-item'
     container.appendChild(item)
-    record.validate()
+    //record.validate()
   }
 }
