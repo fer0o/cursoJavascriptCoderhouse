@@ -62,7 +62,7 @@ function addElementToList () {
   })
   elements.push(entryData)
   renderElements(elements)
-  localStorage.setItem('elements', JSON.stringify(elements))
+  //localStorage.setItem('elements', JSON.stringify(elements))
 }
 
 function getStatus ({ systolic, diastolic }) {
