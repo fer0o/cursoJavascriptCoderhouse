@@ -46,3 +46,16 @@ input[type=submit]{
     justify-content: center;
     padding-bottom: 2rem;
 }
+
+.high {
+    color: red;
+}
+.normal {
+    color: yellow;
+}
+.low {
+    color: orange;
+}
+.risk{
+    color: blueviolet;
+}
