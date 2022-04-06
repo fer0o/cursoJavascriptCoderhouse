@@ -1,15 +1,22 @@
-// const storageElements = localStorage.getItem('elements')
+const storageElements = localStorage.getItem('elements')
 let elements = []
-// if (storageElements) {
-//   elements = JSON.parse(storageElements).map(entry => new Record(entry))
-// }
-// renderElements()
+if (storageElements) {
+  elements = JSON.parse(storageElements).map(entry => new Record(entry))
+  renderElements()
+} else {
+  fetch('/newPrototipe/data.json')
+    .then(response => response.json())
+    .then(data => data.map(e => new Record(e)))
+    .then(records => {
+      elements = records
+      renderElements()
+    })
+}
 
 function Record ({ systolic, diastolic, date }) {
   this.systolic = systolic
   this.diastolic = diastolic
   this.date = date
-  // aqui va la validacion  con el calculo
 }
 
 //declarar funcion
@@ -62,7 +69,7 @@ function addElementToList () {
   })
   elements.push(entryData)
   renderElements(elements)
-  //localStorage.setItem('elements', JSON.stringify(elements))
+  localStorage.setItem('elements', JSON.stringify(elements))
 }
 
 function getStatus ({ systolic, diastolic }) {
@@ -109,10 +116,3 @@ function renderElements () {
     container.appendChild(item)
   }
 }
-fetch('/newPrototipe/data.json')
-  .then(response => response.json())
-  .then(data => data.map(e => new Record(e)))
-  .then(records => {
-    elements = records
-    renderElements()
-  })
