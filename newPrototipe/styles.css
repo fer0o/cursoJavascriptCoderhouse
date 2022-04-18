@@ -49,7 +49,7 @@ input[type=submit]{
 .info{
     margin-left: 3rem;
 }
-.table, th, td {
+.table {
     width: 100%;
      border:1px solid black;
 }
@@ -101,4 +101,35 @@ input[type=submit]{
 }
 .risk{
     color: rgba(253, 126, 7, 0.835);
+}
+section p{
+text-align: left;
+}
+.ul-causas{
+    text-align: left;
+}
+.ul-causas li {
+    margin-top: 1rem;
+}
+
+.ul-sintomas{
+    text-align: left;
+}
+.ul-sintomas li {
+    margin-top: 1rem;
+}
+.div-sintomas{
+    padding-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.img-sintomas{
+    
+    margin-top: 20px;
+}
+.remedios{
+    margin-top: 1rem;
+}
+.ol-sintomas{
+    text-align: left;
 }

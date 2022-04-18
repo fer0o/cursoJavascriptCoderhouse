@@ -70,6 +70,32 @@ function addElementToList () {
   elements.push(entryData)
   renderElements(elements)
   localStorage.setItem('elements', JSON.stringify(elements))
+  // metodo notifyStatus
+  const status = getStatus(entryData)
+  if (status === 'Low') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Tas bajo',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  } else if (status === 'Normal') {
+    Swal.fire('Estas Normal')
+  } else if (status === 'Risk') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'andas alto carnal',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  } else if (status === 'High ') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Te vas a morir',
+      text: 'Something went wrong!',
+      footer: '<a href="">Why do I have this issue?</a>'
+    })
+  }
 }
 
 function getStatus ({ systolic, diastolic }) {
@@ -109,10 +135,19 @@ function renderElements () {
   container.innerHTML = ''
   for (const element of elements) {
     //console.log(element)
-    const item = document.createElement('li')
 
-    item.textContent = `Systolic:${element.systolic} | Distolic:${element.diastolic} | Fecha: ${element.date}`
-    item.className = `list-group-item ${classes[getStatus(element)]}`
-    container.appendChild(item)
+    const item = document.createElement('td')
+    const item2 = document.createElement('td')
+    const item3 = document.createElement('td')
+    item.textContent = element.systolic
+    item2.textContent = element.diastolic
+    item3.textContent = element.date
+    const tr = document.createElement('tr')
+    tr.className = `${classes[getStatus(element)]}`
+    tr.appendChild(item)
+    tr.appendChild(item2)
+    tr.appendChild(item3)
+
+    container.appendChild(tr)
   }
 }
