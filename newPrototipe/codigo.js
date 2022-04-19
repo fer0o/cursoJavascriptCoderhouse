@@ -70,26 +70,45 @@ function addElementToList () {
   elements.push(entryData)
   renderElements(elements)
   localStorage.setItem('elements', JSON.stringify(elements))
+  // metodo notifyStatus
+  const status = getStatus(entryData)
+  if (status === 'Low') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Tas bajo'
+    })
+  } else if (status === 'Normal') {
+    Swal.fire('Estas Normal')
+  } else if (status === 'Risk') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'andas alto carnal'
+    })
+  } else if (status === 'High ') {
+    Swal.fire({
+      icon: 'error',
+      title: 'Te vas a morir',
+      text: 'Something went wrong!'
+    })
+  }
 }
 
 function getStatus ({ systolic, diastolic }) {
   if (systolic < 60 || diastolic < 60) {
-    // console.log('Low levels, its necessary to visit a doctor your are hypotense')
     return 'Low'
   } else if (
     (systolic > 90 && systolic <= 120) ||
     (diastolic >= 60 && diastolic <= 80)
   ) {
-    // console.log('Normal levels, Its not necessary to visit a doctir but still care')
     return 'Normal'
   } else if (
     (systolic >= 120 && systolic <= 139) ||
     (diastolic >= 80 && diastolic <= 89)
   ) {
-    // console.log('You have risk levels of hypertension, you need to visit a doctor to confirm and treatment')
     return 'Risk'
   } else if (systolic > 140 || diastolic > 90) {
-    // console.log('You have high levels, Its necessary to visit a doctor and have an property treatment')
     return 'High'
   } else {
     return 'invalid data'
@@ -109,10 +128,79 @@ function renderElements () {
   container.innerHTML = ''
   for (const element of elements) {
     //console.log(element)
-    const item = document.createElement('li')
 
-    item.textContent = `Systolic:${element.systolic} | Distolic:${element.diastolic} | Fecha: ${element.date}`
-    item.className = `list-group-item ${classes[getStatus(element)]}`
-    container.appendChild(item)
+    const item = document.createElement('td')
+    const item2 = document.createElement('td')
+    const item3 = document.createElement('td')
+    item.textContent = element.systolic
+    item2.textContent = element.diastolic
+    item3.textContent = element.date
+    const tr = document.createElement('tr')
+    tr.className = `${classes[getStatus(element)]}`
+    tr.appendChild(item)
+    tr.appendChild(item2)
+    tr.appendChild(item3)
+
+    container.appendChild(tr)
+    const status = getStatus(element)
+    tr.addEventListener('click', () => {
+      hideDiv.style.display = 'none'
+      hideDiv2.style.display = 'none'
+      hideDiv3.style.display = 'none'
+      hideDiv4.style.display = 'none'
+      if (status === 'Low') {
+        hideDiv.style.display = 'block'
+      } else if (status === 'Normal') {
+        hideDiv2.style.display = 'block'
+      } else if (status === 'Risk') {
+        hideDiv3.style.display = 'block'
+      } else if (status === 'High') {
+        hideDiv4.style.display = 'block'
+      }
+    })
   }
 }
+
+// esconder la info cuando se apriete el boton de cerrado
+const toggleBtn = document.querySelector('#toggleBtn')
+const hideDiv = document.querySelector('.presion-baja')
+
+toggleBtn.addEventListener('click', () => {
+  if (hideDiv.style.display === 'none') {
+    hideDiv.style.display = 'block'
+  } else {
+    hideDiv.style.display = 'none'
+  }
+})
+const toggleBtn2 = document.querySelector('#toggleBtn2')
+const hideDiv2 = document.querySelector('.presion-normal')
+
+toggleBtn2.addEventListener('click', () => {
+  if (hideDiv2.style.display === 'none') {
+    hideDiv2.style.display = 'block'
+  } else {
+    hideDiv2.style.display = 'none'
+  }
+})
+
+const toggleBtn3 = document.querySelector('#toggleBtn3')
+const hideDiv3 = document.querySelector('.presion-riesgo')
+
+toggleBtn3.addEventListener('click', () => {
+  if (hideDiv3.style.display === 'none') {
+    hideDiv3.style.display = 'block'
+  } else {
+    hideDiv3.style.display = 'none'
+  }
+})
+
+const toggleBtn4 = document.querySelector('#toggleBtn4')
+const hideDiv4 = document.querySelector('.presion-alta')
+
+toggleBtn4.addEventListener('click', () => {
+  if (hideDiv4.style.display === 'none') {
+    hideDiv4.style.display = 'block'
+  } else {
+    hideDiv4.style.display = 'none'
+  }
+})
