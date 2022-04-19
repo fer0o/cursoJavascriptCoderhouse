@@ -1,239 +1,364 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <!-- sweet alert -->
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="../newPrototipe/styles.css" />
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- sweet alert -->
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="../newPrototipe/styles.css" />
+  <title>Document</title>
 </head>
+
 <body>
-    <main class="container mt-5 text-center">
-        <div id="app" class="container d-flex flex-column">
-            <h1>Registro de medicion de presión</h1>
-            <h4 class="text-center">Sistema para registro de medición de presión sanguinea</h4>
+  <main class="container mt-5 text-center">
+    <div id="app" class="container d-flex flex-column">
+      <h1>Registro de medicion de presión</h1>
+      <h4 class="text-center">Sistema para registro de medición de presión sanguinea</h4>
+    </div>
+    <div>
+      <form>
+        <div class="systolic">
+          <div>
+            <span> introduce tu medición systolica</span>
+          </div>
+          <input type="number" placeholder="Introdusca valor sistolico" id="sys" />
+        </div>
+        <div class="distolic">
+          <div>
+            <span>introduce tu medición distolica</span>
+          </div>
+          <input type="number" placeholder="Introdusca valor diastolico" id="dis" />
+        </div>
+        <div class="date-registro">
+          <div>
+            <span>Introduce la fecha del registro</span>
+          </div>
+          <input type="date" value="2022-04-14" min="2019-01-01" max="2022-12-31" id="date" />
         </div>
         <div>
-            <form>
-                <div class="systolic">
-                    <div>
-                        <span> introduce tu medición systolica</span>
-                    </div>
-                  <input
-                    type="number"
-                    placeholder="Insert systolic data"
-                    id="sys"
-                  />
-                </div>
-                <div class="distolic">
-                    <div>
-                        <span>introduce tu medición distolica</span>
-                    </div>
-                  <input
-                    type="number"
-                    placeholder="Insert diastolic data"
-                    id="dis"
-                  />
-                </div>
-                <div class="date-registro">
-                    <div>
-                        <span>Introduce la fecha del registro</span>
-                    </div>
-                  <input
-                    type="date"
-                    value="2022-04-14"
-                    min="2019-01-01"
-                    max="2022-12-31"
-                    id="date"
-                  />
-                </div>
-                <div>
-                    <button class="btn btn-primary mt-3 mb-5" id="add" onClick="addElementToList()">
-                        Agregar
-                    </button>
-
-                </div>
-                <div>
-                    <h2>Historial</h2>
-                    <!-- <table class="table">
-                      <tr>
-                        <th id="elements" class="list-group"></th>
-                      </tr>
-
-                    </table> -->
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">Sistolic</th>
-                          <th scope="col">Diastolic</th>
-                          <th scope="col">Fecha</th>
-                        </tr>
-                      </thead>
-                      <tbody id="elements">
-                      </tbody>
-                    </table>
-
-                </div>
-            </form>
+          <button class="btn btn-primary mt-3 mb-5" id="add" onClick="addElementToList()">
+            Agregar
+          </button>
         </div>
-        <!-- div de presion baja -->
+        <!-- div para mostrar cuadros de informacion -->
+        <div class="info-row">
+          <div>
+          <div class="cuadro-bajo"></div>
+          <div class="info-show">
+            <span> <b>Presion Baja (Hipotensión)</b></span>
+            <p>sistolica menor que 60 diastolica menor que 60</p>
+          </div>
+        </div>
         <div>
-          <section>
+          <div class="cuadro-normal"></div>
+          <div class="info-show">
+            <span> <b>presion Normal</b></span>
+            <p>sistolica entre 90 y 120  diastolica entre 61 y 80 </p>
+          </div>
+        </div>
+        <div>
+          <div class="cuadro-riesgo"></div>
+          <div class="info-show">
+            <span> <b> Presion Riesgo (Prehipertensión)</b></span>
+            <p> sistolica entre 121 y 139 diastolica entre 81 y 89 </p>
+          </div>
+        </div>
+        <div>
+          <div class="cuadro-alta"></div>
+          <div class="info-show">
+            <span> <b> Presion Alta (Hipertensión)</b></span>
+            <p> sistolica mayores a 140   diastolica mayores a 90 </p>
+          </div>
+        </div>
+          
+          
+        </div>
+        <h2>Historial</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Sistolica</th>
+              <th scope="col">Diastolica</th>
+              <th scope="col">Fecha</th>
+            </tr>
+          </thead>
+          <tbody id="elements">
+          </tbody>
+        </table>
+
+    </div>
+    </form>
+    </div>
+    <!-- div de presion baja -->
+    <div class="presion-baja">
+      <section>
+        <div>
+          <h2>Presión arterial baja (hipotensión)</h2>
+          <p>La presión arterial baja o hipotensión regularmente se define como una lectura menor que 90 mmHg sobre 60
+            mmHg.</p>
+          <p>Sucede cuando la presión arterial es mucho más baja de lo normal. Esto significa que el corazón, el cerebro
+            y otras partes del cuerpo no reciben suficiente sangre</p>
+        </div>
+        <div>
+          <h3>Causas</h3>
+          <p>
+            Existen varias causas potenciales de presión arterial baja.
+            Algunas de las causas más comunes incluyen:
+          </p>
+          <div>
+            <ul class="ul-causas">
+              <li><b>Embarazo</b></li>
+              <p>Durante el embarazo el sistema circulatorio se expande muy rápido; esto causa que la presión arterial
+                disminuya. En las mujeres la presión arterial puede volver a sus niveles normales luego del parto.</p>
+              <li><b>Problemas cardiacos</b></li>
+              <p>Algunas enfermedades cardíacas pueden causar desniveles en la presión arterial. Las enfermedades que
+                pueden causar hipotensión pueden ser bradicardia, un ataque cardíaco, insuficiencia cardiaca o problemas
+                en la válvula cardiaca.</p>
+              <li><b>Deshidratación</b></li>
+              <p>La pérdida elevada de agua en el cuerpo puede causar debilidad, fatiga y mareos. La deshidratación
+                puede ser un factor para que la presión arterial baje, pero puede ser atendida de forma inmediata y
+                evitar que existan problemas a largo plazo. </p>
+              <li><b>Septicemia</b></li>
+              <p>Una infección grave en el cuerpo puede provocar que la presión arterial caiga drásticamente. Hay que
+                tener gran cuidado en estos casos, ya que puede poner en riesgo la vida de la persona.</p>
+              <li><b>Problemas endocrinos</b></li>
+              <p>En algunos casos, las personas con diabetes pueden tener problemas de tensión baja. Asimismo, otras de
+                las enfermedades que pueden afectar a la tensión son: hipoglucemia, enfermedad paratiroidea, enfermedad
+                de Addison.</p>
+              <li><b>Anafilaxia</b></li>
+              <p>Una reacción alérgica grave es conocida como anafilaxia. Esta puede ser causada por distintos factores
+                como medicamentos, venenos de insectos, alimentos y hasta látex. Una reacción alérgica grave puede
+                causar hinchazón en la garganta, problemas respiratorios, urticaria y caída de la presión arterial.</p>
+              <p>Sin embargo, la presión arterial baja también puede ser un indicador de buena salud, si la persona no
+                experimenta síntomas.</p>
+            </ul>
+          </div>
+          <h3>Sintomas</h3>
+          <div class="div-sintomas">
+            <ul class="ul-sintomas">
+              <li>Mareos o sensación de aturdimiento.</li>
+              <li>Fatiga.</li>
+              <li>Náuseas.</li>
+              <li>Vómitos</li>
+              <li>Falta de concentración.</li>
+              <li>Somnolencia.</li>
+              <li>Debilidad.</li>
+              <li>Visión borrosa.</li>
+              <li>Desmayo</li>
+            </ul>
             <div>
-              <h2>Presión arterial baja (hipotensión)</h2>
-              <p>La presión arterial baja o hipotensión regularmente se define como una lectura menor que 90 mmHg sobre 60 mmHg.</p>
-              <p>Sucede cuando la presión arterial es mucho más baja de lo normal. Esto significa que el corazón, el cerebro y otras partes del cuerpo no reciben suficiente sangre</p>
+              <img class="img-sintomas"
+                src="https://policlinicametropolitana.org/wp-content/uploads/2021/07/tension-baja-2-768x512.jpg"
+                width="400" height="350">
             </div>
-            <div>
-              <h3>Causas</h3>
-              <p>
-                Existen varias causas potenciales de presión arterial baja.
-                Algunas de las causas más comunes incluyen:
+
+          </div>
+        </div>
+        <div class="remedios">
+          <h3>Remedios Caseros</h3>
+          <p>La mayoría de las personas con presión arterial baja no necesitan medicamentos ni intervenciones médicas
+            para subir la presión. Existen muchas maneras naturales y cambios de estilo de vida para subir la presión
+            arterial baja, incluyendo los siguientes:</p>
+          <div>
+            <ol class="ol-sintomas">
+              <li><b>Comer más sal</b></li>
+              <p>Contrariamente al consejo popular, las dietas bajas en sodio no son recomendables para todas las
+                personas con problemas de presión arterial.</p>
+              <p>En el caso de las personas con presión arterial baja, deben considerar aumentar moderadamente su
+                ingesta de sodio para ayudar a subir la presión arterial.</p>
+              <li><b>Evitar bebidas alcohólicas</b></li>
+              <p>El alcohol puede bajar la presión arterial aún más, por lo que las personas con hipotensión deben
+                evitar beber alcohol en exceso.</p>
+              <li><b>Conversar con el médico acerca de los medicamentos</b></li>
+              <p>La presión arterial baja puede ser un efecto secundario de varios medicamentos.
+                Si los síntomas de esta afección inician después de empezar con algún medicamento, la persona debe
+                conversar con su médico acerca de estos síntomas.</p>
+              <li><b>Beber agua</b></li>
+              <p>Beber más agua puede ayudar a aumentar el volumen de sangre, lo que puede aliviar una de las causas
+                potenciales de la presión arterial baja. También puede evitar la deshidratación.</p>
+              <li><b>Comer pequeñas porciones con más frecuencia</b></li>
+              <p>Comer pequeñas porciones con más frecuencia durante el día puede ayudar con la presión arterial baja.
               </p>
-              <div>
-                <ul class="ul-causas">
-                  <li><b>Embarazo</b></li>
-                  <p>Durante el embarazo el sistema circulatorio se expande muy rápido; esto causa que la presión arterial disminuya. En las mujeres la presión arterial puede volver a sus niveles normales luego del parto.</p>
-                  <li><b>Problemas cardiacos</b></li>
-                  <p>Algunas enfermedades cardíacas pueden causar desniveles en la presión arterial. Las enfermedades que pueden causar hipotensión pueden ser bradicardia, un ataque cardíaco, insuficiencia cardiaca o problemas en la válvula cardiaca.</p>
-                  <li><b>Deshidratación</b></li>
-                  <p>La pérdida elevada de agua en el cuerpo puede causar debilidad, fatiga y mareos. La deshidratación puede ser un factor para que la presión arterial baje, pero puede ser atendida de forma inmediata y evitar que existan problemas a largo plazo. </p>
-                  <li><b>Septicemia</b></li>
-                  <p>Una infección grave en el cuerpo puede provocar que la presión arterial caiga drásticamente. Hay que tener gran cuidado en estos casos, ya que puede poner en riesgo la vida de la persona.</p>
-                  <li><b>Problemas endocrinos</b></li>
-                  <p>En algunos casos, las personas con diabetes pueden tener problemas de tensión baja. Asimismo, otras de las enfermedades que pueden afectar a la tensión son: hipoglucemia, enfermedad paratiroidea, enfermedad de Addison.</p>
-                  <li><b>Anafilaxia</b></li>
-                  <p>Una reacción alérgica grave es conocida como anafilaxia. Esta puede ser causada por distintos factores como medicamentos, venenos de insectos, alimentos y hasta látex. Una reacción alérgica grave puede causar hinchazón en la garganta, problemas respiratorios, urticaria y caída de la presión arterial.</p>
-                  <p>Sin embargo, la presión arterial baja también puede ser un indicador de buena salud, si la persona no experimenta síntomas.</p>
-                </ul>
-              </div>
-                  <h3>Sintomas</h3>
-                <div class="div-sintomas">  
-                  <ul class="ul-sintomas">
-                    <li>Mareos o sensación de aturdimiento.</li>
-                    <li>Fatiga.</li>
-                    <li>Náuseas.</li>
-                    <li>Vómitos</li>
-                    <li>Falta de concentración.</li>
-                    <li>Somnolencia.</li>
-                    <li>Debilidad.</li>
-                    <li>Visión borrosa.</li>
-                    <li>Desmayo</li>
-                  </ul>
-                  <div>
-                    <img class="img-sintomas" src="https://policlinicametropolitana.org/wp-content/uploads/2021/07/tension-baja-2-768x512.jpg" width="400" height="350">
-                  </div>
-
-                </div>
-            </div>
-            <div class="remedios">
-              <h3>Remedios Caseros</h3>
-              <p>La mayoría de las personas con presión arterial baja no necesitan medicamentos ni intervenciones médicas para subir la presión. Existen muchas maneras naturales y cambios de estilo de vida para subir la presión arterial baja, incluyendo los siguientes:</p>
-              <div>
-                <ol class="ol-sintomas">
-                  <li><b>Comer más sal</b></li>
-                  <p>Contrariamente al consejo popular, las dietas bajas en sodio no son recomendables para todas las personas con problemas de presión arterial.</p>
-                  <p>En el caso de las personas con presión arterial baja, deben considerar aumentar moderadamente su ingesta de sodio para ayudar a subir la presión arterial.</p>
-                  <li><b>Evitar bebidas alcohólicas</b></li>
-                  <p>El alcohol puede bajar la presión arterial aún más, por lo que las personas con hipotensión deben evitar beber alcohol en exceso.</p>
-                  <li><b>Conversar con el médico acerca de los medicamentos</b></li>
-                  <p>La presión arterial baja puede ser un efecto secundario de varios medicamentos.
-                    Si los síntomas de esta afección inician después de empezar con algún medicamento, la persona debe conversar con su médico acerca de estos síntomas.</p>
-                  <li><b>Beber agua</b></li>
-                  <p>Beber más agua puede ayudar a aumentar el volumen de sangre, lo que puede aliviar una de las causas potenciales de la presión arterial baja. También puede evitar la deshidratación.</p>
-                  <li><b>Comer pequeñas porciones con más frecuencia</b></li>
-                  <p>Comer pequeñas porciones con más frecuencia durante el día puede ayudar con la presión arterial baja.</p>
-                  <p>Esto se debe a que las porciones pequeñas evitan la caída de la presión arterial que está asociada con ingerir porciones más grandes y más pesadas.</p>
-                  <li><b>Usar medias de compresión</b></li>
-                  <p>Las medias de compresión ayudan a reducir la cantidad de sangre que se queda estancada en la parte inferior de las piernas y los pies, desplazándola a otra parte.</p>
-                  <p>Las medias de compresión también se utilizan para aliviar la presión y el dolor asociado con las venas varicosas. Puedes comprarlas en línea.</p>
-                </ol>
-              </div>
-             
-            </div>
-          </section>
+              <p>Esto se debe a que las porciones pequeñas evitan la caída de la presión arterial que está asociada con
+                ingerir porciones más grandes y más pesadas.</p>
+              <li><b>Usar medias de compresión</b></li>
+              <p>Las medias de compresión ayudan a reducir la cantidad de sangre que se queda estancada en la parte
+                inferior de las piernas y los pies, desplazándola a otra parte.</p>
+              <p>Las medias de compresión también se utilizan para aliviar la presión y el dolor asociado con las venas
+                varicosas. Puedes comprarlas en línea.</p>
+            </ol>
+          </div>
         </div>
-        <!-- div presion normal -->
+      </section>
+      <button class="btn btn-primary mt-3 mb-5" id="toggleBtn">Cerrar</button>
+    </div>
+    <!-- div presion normal -->
+    <div class="presion-normal">
+      <section>
         <div>
-          <section>
-            <div>
-              <h2>Presion Arterial Normal</h2>
-              <p>Muy bien Tienes presion arterial normal, Aquí hay unos consejos para mantener tu salud en buen estado</p>
-            </div>
-            <div>
-              <ol class="ol-sintomas">
-               <li><b>Mantener el peso adecuado.</b></li>
-               <p>La presión arterial puede aumentar a medida que se incrementa el preso corporal. Asimismo, con cada kilogramo de grasa que se pierde, disminuye la tensión arterial.</p>
-               <li><b>Hacer actividad física.</b></li>
-               <p>30 minutos diarios de ejercicio ligero, ayudan a controlar la presión arterial. Algunos ejemplos de ejercicio aeróbico que puede intentar bajar la presión arterial incluyen caminar, trotar, andar en bicicleta, nadar o bailar. Como la musculación también puede ayudar a reducir la presión arterial, los especialistas aconsejan incluir ejercicios de entrenamiento de fuerza al menos dos días a la semana. La actividad física debe hacerse en acuerdo con el médico tratante y tras haberse realizado los chequeos de salud correspondiente.</p>
-               <li><b>Seguir una dieta saludable.</b></li>
-               <p>Una alimentación variada, idealmente controlada por un nutricionista y rica en granos integrales, frutas, verduras y productos lácteos bajos en grasa, puede contribuir tanto para el control de esta condición como para el bienestar general. </p>
-               <li><b>Reducir la sal agregada</b></li>
-               <p> El sodio juega un papel fundamental en la tensión arterial, por lo que disminuir su ingesta es central a la hora de controlar la presión. Incluso una pequeña disminución en el sodio que se le agrega a los alimentos es capaz de contribuir a mejorar la salud cardiovascular y reducir la presión arterial en aproximadamente 5 a 6 mm Hg.</p>
-               <li><b>Limitar la ingesta de alcohol.</b></li>
-               <p>El exceso de alcohol genera perjuicios en distintos aspectos de la salud, incluida la presión arterial.</p>
-               <li><b>No fumar</b></li>
-               <p>El tabaquismo está muy asociado al desarrollo de hipertensión. Cada cigarrillo contribuye a aumentar la presión arterial inclusive durante varios minutos después de haberlo terminado.</p>
-              </ol>
-            </div>
-          </section>
+          <h2>Presion Arterial Normal</h2>
+          <p>Muy bien Tienes presion arterial normal, Aquí hay unos consejos para mantener tu salud en buen estado</p>
         </div>
-        <!-- div presion alta -->
         <div>
-          <section>
-            <div>
-              <h2>Presion Arterial Alta o Elevada ( prehipertensión )</h2>
-              <p>Tener presión arterial elevada significa que tu presión arterial es ligeramente superior a la que se considera normal. Algunos médicos hacen referencia a la presión arterial ligeramente elevada como prehipertensión. Es probable que la presión arterial elevada se convierta en presión arterial alta (hipertensión), a menos que comiences a hacer cambios en el estilo de vida, como ejercitarte más y consumir alimentos más saludables.</p>
-              <p>La presión arterial elevada y la presión arterial alta aumentan el riesgo de padecer un ataque cardíaco, accidente cerebrovascular e insuficiencia cardíaca. Algunas investigaciones indican que la presión arterial elevada (crónica) a largo plazo puede contribuir a un deterioro cognitivo. La pérdida de peso, el ejercicio y otros cambios saludables en el estilo de vida a menudo pueden controlar la presión arterial elevada y sentar las bases para una vida con mejor salud.</p>
-            </div>
-            <div>
-              <h3>Causas</h3>
-              <p>Cualquier factor que aumente la presión contra las paredes de las arterias puede generar presión arterial elevada. La acumulación de depósitos de grasa en las arterias (aterosclerosis) puede desencadenar presión arterial alta.</p>
-              <img src="https://www.huskyhealthct.org/images/clogged_vs_clean_artery_spanish.jpg">
-              <p>Además de la aterosclerosis, entre otras enfermedades que pueden provocar presión arterial elevada o presión arterial alta se incluyen las siguientes:</p>
-            </div>
-            <div class="div-sintomas">
-              <ul class="ul-causas">
-                <li>Apnea obstructiva del sueño</li>
-                <li>Enfermedad renal</li>
-                <li>Enfermedad de la glándula suprarrenal</li>
-                <li>Enfermedad tiroidea</li>
-                <li>Estrés en la vida cotidiana</li>
-              </ul>
-              <div>
-                <img src="https://policlinicametropolitana.org/wp-content/uploads/2021/07/tension-baja-3-768x512.jpg" width="400" height="250">
-              </div>
-            </div>
-            <div class="remedios">
-              <h2>Maneras de controlar la presión arterial alta sin medicamentos</h2>
-              <p>El estilo de vida cumple una función importante en el control de la presión arterial alta. Si controlas tu presión arterial exitosamente con un estilo de vida saludable, podrías evitar, retrasar o reducir la necesidad de tomar medicamentos.</p>
-              <div>
-                <ol class="ol-sintomas">
-                  <li><b>Reduce el exceso de peso y cuida la cintura</b></li>
-                  <p>Bajar de peso es uno de los cambios en el estilo de vida más eficaces para controlar la presión arterial. Si eres una persona con sobrepeso u obesidad, bajar incluso una pequeña cantidad de peso puede ayudar a reducir tu presión arterial.</p>
-                  <li><b>Haz ejercicio regularmente</b></li>
-                  <p>La actividad física regular (por ejemplo, 150 minutos por semana o unos 30 minutos la mayoría de los días de la semana) puede reducir la presión arterial en aproximadamente 5 mm Hg y 8 mm Hg si tienes presión arterial alta. Es importante tener constancia porque si no te ejercitas, la presión arterial puede elevarse nuevamente.</p>
-                  <li><b>Lleva una dieta saludable</b></li>
-                  <p>Llevar una alimentación que contenga gran cantidad de cereales integrales, frutas, verduras y productos lácteos con bajo contenido de grasa y que reduzca las grasas saturadas y el colesterol puede disminuir tu presión arterial hasta en 11 mm Hg si tienes presión arterial alta. Este plan de alimentación se conoce como dieta de enfoques dietéticos para detener la hipertensión (DASH).</p>
-                  <li><b>Reduce el consumo de sodio en tu dieta</b></li>
-                  <p>Incluso una pequeña reducción de sodio en tu alimentación puede mejorar tu salud cardíaca y reducir la presión arterial aproximadamente entre 5 mm Hg y 6 mm Hg si padeces presión arterial alta.</p>
-                  <li><b>Limita la cantidad de alcohol que bebes</b></li>
-                  <li><b>Dejar de fumar</b></li>
-                  <li><b>Reduce el consumo de cafeína</b></li>
-                  <p> La cafeína puede elevar la presión arterial hasta 10 mm Hg en personas que no la consumen con frecuencia. Sin embargo, es posible que las personas que beben café con regularidad presenten un efecto leve o nulo en la presión arterial.</p>
-                  <li><b>Reduce el estrés</b></li>
-                  <li><b>Contrólate la presión arterial en tu hogar y consulta a tu médico con regularidad</b></li>
-                </ol>
-              </div> 
-            </div>
-
-          </section>
+          <ol class="ol-sintomas">
+            <li><b>Mantener el peso adecuado.</b></li>
+            <p>La presión arterial puede aumentar a medida que se incrementa el preso corporal. Asimismo, con cada
+              kilogramo de grasa que se pierde, disminuye la tensión arterial.</p>
+            <li><b>Hacer actividad física.</b></li>
+            <p>30 minutos diarios de ejercicio ligero, ayudan a controlar la presión arterial. Algunos ejemplos de
+              ejercicio aeróbico que puede intentar bajar la presión arterial incluyen caminar, trotar, andar en
+              bicicleta, nadar o bailar. Como la musculación también puede ayudar a reducir la presión arterial, los
+              especialistas aconsejan incluir ejercicios de entrenamiento de fuerza al menos dos días a la semana. La
+              actividad física debe hacerse en acuerdo con el médico tratante y tras haberse realizado los chequeos de
+              salud correspondiente.</p>
+            <li><b>Seguir una dieta saludable.</b></li>
+            <p>Una alimentación variada, idealmente controlada por un nutricionista y rica en granos integrales, frutas,
+              verduras y productos lácteos bajos en grasa, puede contribuir tanto para el control de esta condición como
+              para el bienestar general. </p>
+            <li><b>Reducir la sal agregada</b></li>
+            <p> El sodio juega un papel fundamental en la tensión arterial, por lo que disminuir su ingesta es central a
+              la hora de controlar la presión. Incluso una pequeña disminución en el sodio que se le agrega a los
+              alimentos es capaz de contribuir a mejorar la salud cardiovascular y reducir la presión arterial en
+              aproximadamente 5 a 6 mm Hg.</p>
+            <li><b>Limitar la ingesta de alcohol.</b></li>
+            <p>El exceso de alcohol genera perjuicios en distintos aspectos de la salud, incluida la presión arterial.
+            </p>
+            <li><b>No fumar</b></li>
+            <p>El tabaquismo está muy asociado al desarrollo de hipertensión. Cada cigarrillo contribuye a aumentar la
+              presión arterial inclusive durante varios minutos después de haberlo terminado.</p>
+          </ol>
         </div>
-    </main>
-    
+      </section>
+      <button class="btn btn-primary mt-3 mb-5" id="toggleBtn2">Cerrar</button>
+    </div>
+    <!-- div presion alta -->
+    <div class="presion-riesgo">
+      <section>
+        <div>
+          <h2>Presion Arterial Alta o Elevada ( prehipertensión )</h2>
+          <p>Tener presión arterial elevada significa que tu presión arterial es ligeramente superior a la que se
+            considera normal. Algunos médicos hacen referencia a la presión arterial ligeramente elevada como
+            prehipertensión. Es probable que la presión arterial elevada se convierta en presión arterial alta
+            (hipertensión), a menos que comiences a hacer cambios en el estilo de vida, como ejercitarte más y consumir
+            alimentos más saludables.</p>
+          <p>La presión arterial elevada y la presión arterial alta aumentan el riesgo de padecer un ataque cardíaco,
+            accidente cerebrovascular e insuficiencia cardíaca. Algunas investigaciones indican que la presión arterial
+            elevada (crónica) a largo plazo puede contribuir a un deterioro cognitivo. La pérdida de peso, el ejercicio
+            y otros cambios saludables en el estilo de vida a menudo pueden controlar la presión arterial elevada y
+            sentar las bases para una vida con mejor salud.</p>
+        </div>
+        <div>
+          <h3>Causas</h3>
+          <p>Cualquier factor que aumente la presión contra las paredes de las arterias puede generar presión arterial
+            elevada. La acumulación de depósitos de grasa en las arterias (aterosclerosis) puede desencadenar presión
+            arterial alta.</p>
+          <img src="https://www.huskyhealthct.org/images/clogged_vs_clean_artery_spanish.jpg">
+          <p>Además de la aterosclerosis, entre otras enfermedades que pueden provocar presión arterial elevada o
+            presión arterial alta se incluyen las siguientes:</p>
+        </div>
+        <div class="div-sintomas">
+          <ul class="ul-causas">
+            <li>Apnea obstructiva del sueño</li>
+            <li>Enfermedad renal</li>
+            <li>Enfermedad de la glándula suprarrenal</li>
+            <li>Enfermedad tiroidea</li>
+            <li>Estrés en la vida cotidiana</li>
+          </ul>
+          <div>
+            <img src="https://policlinicametropolitana.org/wp-content/uploads/2021/07/tension-baja-3-768x512.jpg"
+              width="400" height="250">
+          </div>
+        </div>
+        <div class="remedios">
+          <h2>Maneras de controlar la presión arterial alta sin medicamentos</h2>
+          <p>El estilo de vida cumple una función importante en el control de la presión arterial alta. Si controlas tu
+            presión arterial exitosamente con un estilo de vida saludable, podrías evitar, retrasar o reducir la
+            necesidad de tomar medicamentos.</p>
+          <div>
+            <ol class="ol-sintomas">
+              <li><b>Reduce el exceso de peso y cuida la cintura</b></li>
+              <p>Bajar de peso es uno de los cambios en el estilo de vida más eficaces para controlar la presión
+                arterial. Si eres una persona con sobrepeso u obesidad, bajar incluso una pequeña cantidad de peso puede
+                ayudar a reducir tu presión arterial.</p>
+              <li><b>Haz ejercicio regularmente</b></li>
+              <p>La actividad física regular (por ejemplo, 150 minutos por semana o unos 30 minutos la mayoría de los
+                días de la semana) puede reducir la presión arterial en aproximadamente 5 mm Hg y 8 mm Hg si tienes
+                presión arterial alta. Es importante tener constancia porque si no te ejercitas, la presión arterial
+                puede elevarse nuevamente.</p>
+              <li><b>Lleva una dieta saludable</b></li>
+              <p>Llevar una alimentación que contenga gran cantidad de cereales integrales, frutas, verduras y productos
+                lácteos con bajo contenido de grasa y que reduzca las grasas saturadas y el colesterol puede disminuir
+                tu presión arterial hasta en 11 mm Hg si tienes presión arterial alta. Este plan de alimentación se
+                conoce como dieta de enfoques dietéticos para detener la hipertensión (DASH).</p>
+              <li><b>Reduce el consumo de sodio en tu dieta</b></li>
+              <p>Incluso una pequeña reducción de sodio en tu alimentación puede mejorar tu salud cardíaca y reducir la
+                presión arterial aproximadamente entre 5 mm Hg y 6 mm Hg si padeces presión arterial alta.</p>
+              <li><b>Limita la cantidad de alcohol que bebes</b></li>
+              <li><b>Dejar de fumar</b></li>
+              <li><b>Reduce el consumo de cafeína</b></li>
+              <p> La cafeína puede elevar la presión arterial hasta 10 mm Hg en personas que no la consumen con
+                frecuencia. Sin embargo, es posible que las personas que beben café con regularidad presenten un efecto
+                leve o nulo en la presión arterial.</p>
+              <li><b>Reduce el estrés</b></li>
+              <li><b>Contrólate la presión arterial en tu hogar y consulta a tu médico con regularidad </b></li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <button class="btn btn-primary mt-3 mb-5" id="toggleBtn3">Cerrar</button>
+    </div>
+    <!-- div hipertensión -->
+    <div class="presion-alta">
+      <section>
+        <div>
+          <h2>Presión arterial alta (hipertensión)</h2>
+          <p>La hipertensión arterial es una enfermedad crónica en la que aumenta la presión con la que el corazón
+            bombea sangre a las arterias, para que circule por todo el cuerpo.</p>
+          <p>El sobrepeso y la obesidad pueden aumentar la presión arterial, sube los niveles de glucosa en la sangre,
+            colesterol, triglicéridos y ácido úrico, lo que dificulta que la sangre fluya por el organismo</p>
+        </div>
+        <div>
+          <h3>Causas</h3>
+          <span>Existen dos tipos de presión arterial alta.</span>
+          <p><b>Hipertensión primaria (esencial)</b></p>
+          <p>En la mayoría de los adultos, no hay una causa identificable de presión arterial alta. Este tipo de presión
+            arterial alta, denominada hipertensión primaria (esencial), suele desarrollarse gradualmente en el
+            transcurso de muchos años.</p>
+          <p><b>Hipertensión secundaria</b></p>
+          <p>Algunas personas tienen presión arterial alta causada por una enfermedad subyacente.
+            Este tipo de presión arterial alta, llamada hipertensión arterial secundaria, tiende a aparecer
+            repentinamente y causa una presión arterial más alta que la hipertensión primaria.
+          </p>
+          <div class="div-sintomas">
+            <ul class="ul-sintomas">
+              <li>Apnea obstructiva del sueño</li>
+              <li>Enfermedad renal</li>
+              <li>Tumores de la glándula suprarrenal</li>
+              <li>Problemas de tiroides</li>
+              <li>Ciertos defectos de nacimiento (congénitos) en los vasos sanguíneos</li>
+              <li>Ciertos medicamentos, como las píldoras anticonceptivas, los antigripales, los descongestionantes, los
+                analgésicos de venta libre y algunos medicamentos con receta médica</li>
+              <li>Drogas ilícitas, como la cocaína y las anfetaminas</li>
+            </ul>
+            <div>
+              <img class="img-sintomas" src="https://www.pngall.com/wp-content/uploads/8/Warning-PNG-Picture.png"
+                width="400" height="350">
+            </div>
+          </div>
+        </div>
+        <div>
+          <h3><b>Cuando tienes hipertensión es recomendable acudir con tu médico lo antes posible</b></h3>
+        </div>
+      </section>
+      <button class="btn btn-primary mt-3 mb-5" id="toggleBtn4">Cerrar</button>
+    </div>
+  </main>
+
 </body>
 <script src="codigo.js"></script>
+
 </html>

@@ -133,3 +133,53 @@ text-align: left;
 .ol-sintomas{
     text-align: left;
 }
+.presion-baja, .presion-normal, .presion-alta, .presion-riesgo{
+    display: none;
+}
+#elements tr{
+    cursor: pointer;
+}
+.info-row{
+    display: flex;
+    justify-content: space-between;
+    border: solid black 1px;
+    padding-right: 2rem;
+    margin-bottom: 1rem;
+
+}
+.info-show{
+    margin-top: 1rem;
+    padding: 0;
+}
+.cuadro-bajo{
+    background-color:rgb(9, 255, 0) ;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.cuadro-normal{
+    background-color:rgb(0, 26, 255) ;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.cuadro-riesgo{
+    background-color:rgba(253, 126, 7, 0.835) ;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
+.cuadro-alta{
+    background-color:rgb(253, 9, 9) ;
+    float: left;
+    width: 40px;
+    height: 40px;
+    margin: 30px;
+    border: 1px solid rgba(0, 0, 0, .2);
+}
