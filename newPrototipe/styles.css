@@ -1,12 +1,14 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Times New Roman', Times, serif;
 }
-.titulo{
-   display: flex;
+.titulo-info{
    align-items: center;
    justify-content: center;
-   padding-top: 2rem;
+}
+.titulo-info h1{    
+    font-weight:bold ;
 }
 .form-data{
     display: flex;
@@ -52,6 +54,8 @@ input[type=submit]{
 .table {
     width: 100%;
      border:1px solid black;
+     font-weight: bold;
+     font-size: large;
 }
 
 .box-green{
@@ -146,6 +150,12 @@ text-align: left;
     padding-right: 2rem;
     margin-bottom: 1rem;
 
+}
+.info-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 }
 .info-show{
     margin-top: 1rem;

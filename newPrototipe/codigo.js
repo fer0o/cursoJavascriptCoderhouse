@@ -75,22 +75,27 @@ function addElementToList () {
   if (status === 'Low') {
     Swal.fire({
       icon: 'error',
-      title: 'Oops...',
-      text: 'Tas bajo'
+      title: 'Nivel de Presion Baja',
+      text: 'Recomendable ver indormacion del registro'
     })
   } else if (status === 'Normal') {
-    Swal.fire('Estas Normal')
+    Swal.fire({
+      title: 'Nivel de Presion Normal',
+      text: 'Sigue cuidandote, ver información de registro para recomendaciones'
+    })
   } else if (status === 'Risk') {
     Swal.fire({
       icon: 'error',
-      title: 'Oops...',
-      text: 'andas alto carnal'
+      title: 'Presion en Riesgo de prehipertensión',
+      text:
+        'Recomendaciones en información de registro, sugerencia visitar a un médico'
     })
-  } else if (status === 'High ') {
+  } else if (status === 'High') {
     Swal.fire({
       icon: 'error',
-      title: 'Te vas a morir',
-      text: 'Something went wrong!'
+      title: 'Niveles altos (Hipertensión)',
+      text:
+        'Recomendaciones en informe de registro, sugerencia visitar a tu médico lo antes posible'
     })
   }
 }
@@ -108,7 +113,7 @@ function getStatus ({ systolic, diastolic }) {
     (diastolic >= 80 && diastolic <= 89)
   ) {
     return 'Risk'
-  } else if (systolic > 140 || diastolic > 90) {
+  } else if (systolic >= 140 || diastolic >= 90) {
     return 'High'
   } else {
     return 'invalid data'
